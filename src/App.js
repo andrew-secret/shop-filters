@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import Header from './components/Header/Header';
 import ShopList from "./components/ShopList/ShopList";
+import FilterBar from "./components/FilterBar/FilterBar";
+import { StickyContainer } from 'react-sticky';
 
 const shopitems = [
     {
@@ -67,10 +70,15 @@ class App extends Component {
     
     render() {
         return (
-        <div className="App">
-            <ShopList 
-                shopitems={this.state.shopitems}/>
-        </div>
+            <div className="App">
+                <Header/>
+                <StickyContainer>
+                    <FilterBar />
+                    <ShopList 
+                        shopitems={this.state.shopitems}/>
+                </StickyContainer>
+            </div>
+
         );
     }
 }
