@@ -1,21 +1,78 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import ShopList from "./components/ShopList/ShopList";
+
+const shopitems = [
+    {
+        id: 1,
+        brand: "Asics Tiger",
+        model: "Sneaker 'Gel-Lyte III",
+        price: "69,95",
+        image: "asics-tiger.png",
+        rating: false,
+    },
+    {
+        id: 2,
+        brand: "Nike",
+        model: "Fitnessschuhe 'Metcon R…",
+        price: "124,99",
+        image: "nike-shoe.png",
+        rating: false,
+    },
+    {
+        id: 3,
+        brand: "Mazine",
+        model: "Branston Kapuzenjacke",
+        price: "269,97",
+        image: "mazine-jacket.png",
+        rating: false,
+    },
+    {
+        id: 4,
+        brand: "VERO MODA",
+        model: "Sommer-Playsuit",
+        price: "29,90",
+        image: "vero-moda-dress.png",
+        rating: false,
+    },
+    {
+        id: 5,
+        brand: "VILA",
+        model: "Top VIBERRY",
+        price: "39,90",
+        image: "vila-dress.png",
+        rating: false,
+    },
+    {
+        id: 6,
+        brand: "BEACH TIME",
+        model: "Tanktop  (2 Stück)",
+        price: "22,90",
+        image: "beach-shirt.png",
+        rating: false,
+    },
+]
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+          shopitems
+        };
+
+      }
+    
+    render() {
+        return (
+        <div className="App">
+            <ShopList 
+                shopitems={this.state.shopitems}/>
+        </div>
+        );
+    }
 }
 
 export default App;
