@@ -1,7 +1,7 @@
 import React from 'react';
 import './FilterBar.css';
 import { Sticky } from 'react-sticky';
-// import ShopItem from '../ShopItem/ShopItem';
+import Tabs from '../Tabs/Tabs';
 
 const FilterBar = props => {
   
@@ -18,7 +18,9 @@ const FilterBar = props => {
             }) => {
             return (
                 <div className="FilterBar" style={style}>
-                    <div>Hallo</div>
+                    <Tabs
+                        addActiveClass={props.addActiveClass}
+                        tabList={props.tabList}/>
                 </div>
             )
         }
