@@ -1,22 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import { partial } from '../../lib/shopHelper';
+import classNames from 'classnames';
 import styles from  './Tab.css';
 
-const Tab = props => {
+const Tab = ({
+    id,
+    value,
+    handleChange,
+    sortKey,
+    onSort,
+    sortBy
+}) => {
 
-    const projectListClasses = classnames('tabItem', {
-        ['isActive']: props.isActive === true,
-      });
-
-    const handleToggle = partial(props.addActiveClass, props.id);
+    const tabClass = classNames(
+        ['tabItem'],
+        {'isActive': sortKey === sortBy }
+    );
 
     return(
-        <li key={props.id} className={projectListClasses}
-            onClick={handleToggle}>
-            {props.gender}
+        <li 
+            key={id} 
+            className={tabClass}
+            onClick={() => onSort(sortBy)}>
+            {value}
         </li>
-    )
+    );
 }
 
 export default Tab;

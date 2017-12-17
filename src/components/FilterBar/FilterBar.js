@@ -2,8 +2,9 @@ import React from 'react';
 import './FilterBar.css';
 import { Sticky } from 'react-sticky';
 import Tabs from '../Tabs/Tabs';
+import SelectList from '../SelectList/SelectList';
 
-const FilterBar = props => {
+const FilterBar = (props) => {
   
   return (
     <Sticky>
@@ -19,8 +20,9 @@ const FilterBar = props => {
             return (
                 <div className="FilterBar" style={style}>
                     <Tabs
-                        addActiveClass={props.addActiveClass}
-                        tabList={props.tabList}/>
+                        onSort={props.onSort} 
+                        {...props}/>
+                    <SelectList {...props}/>
                 </div>
             )
         }
