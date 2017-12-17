@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
-import classnames from 'classnames';
-import { partial } from '../../lib/shopHelper';
+import React from 'react';
 import classNames from 'classnames';
-import styles from  './Tab.css';
+import './Tab.css';
 
 const Tab = ({
     id,
