@@ -4,11 +4,7 @@ import { Sticky } from 'react-sticky';
 import Tabs from '../Tabs/Tabs';
 import SelectList from '../SelectList/SelectList';
 
-const FilterBar = ({
-    sortKey,
-    onSort,
-    ...props
-}) => {
+const FilterBar = (props) => {
   
   return (
     <Sticky>
@@ -23,7 +19,9 @@ const FilterBar = ({
             }) => {
             return (
                 <div className="FilterBar" style={style}>
-                    <Tabs {...props}/>
+                    <Tabs
+                        onSort={props.onSort} 
+                        {...props}/>
                     <SelectList {...props}/>
                 </div>
             )

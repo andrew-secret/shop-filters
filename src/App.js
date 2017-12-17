@@ -92,24 +92,6 @@ const shopitems = [
     },
 ];
 
-const tabList = [
-    { id: 1, gender: 'female', url: '/female', isActive: false},
-    { id: 2, gender: 'male', url: '/male', isActive: false}
-];
-
-const sortList = [
-    { id: 1, value: 'Price: low to high', isActive: false, sortBy: 'priceAsc'},
-    { id: 2, value: 'Price: high to low', isActive: false, sortBy: 'priceDesc'},
-    { id: 3, value: 'Rating: low to high', isActive: false, sortBy: 'ratingDesc'},
-    { id: 4, value: 'Rating: low to high', isActive: false, sortBy: 'ratingDesc'},
-];
-
-// const SORTS = {
-//     NONE: shopitems => shopitems,
-//     PRICE_ASC: shopitems => sortBy(shopitems, 'price'),
-//     PRICE_DESC: shopitems => sortBy(shopitems, 'price').reverse(),
-// }
-
 class App extends Component {
 
     constructor(props) {
@@ -117,37 +99,16 @@ class App extends Component {
 
         this.state = {
             shopitems,
-            tabList,
-            sortList,
-            sortKey: 'MALE',
+            sortKey: 'NONE',
         };
 
         this.onSort = this.onSort.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
     }
 
     onSort(sortKey) {
         this.setState({ sortKey });
     }
-
-    // sortByGender = (id) => {
-    //     const tabItem = findById(id, this.state.tabList);
-
-    //     if(tabItem.gender === 'female') {
-    //         this.setState(
-    //             {
-    //                 shopitems: sortBy(shopitems, 'gender'),
-    //             }
-    //         );
-    //     } else {
-    //         this.setState(
-    //             {
-    //                 shopitems,
-    //             }
-    //         );
-    //     }
-    // }
 
     handleChange(evnt, sortKey) {
         this.setState({
@@ -155,35 +116,10 @@ class App extends Component {
         })
     }
 
-    handleClick(evnt) {
-        evnt.preventDefault();
-        console.log('click clack');
-    }
-
-    // addActiveClass = (id) => {
-    //     const tabItem = findById(id, this.state.tabList);
-    //     const toggled = toggleClass(tabItem, tabList);
-    //     const updatedTabList = updateList(this.state.tabList, toggled);
-    //     if(tabItem.gender === 'female') {
-    //         this.setState({
-    //             shopitems: sortBy(shopitems, 'gender'),
-    //         })
-    //     } else {
-    //         this.setState(
-    //             {
-    //                 shopitems,
-    //             }
-    //         );
-    //     }
-    //     this.setState({tabList: updatedTabList,});
-    // }
-
     render() {
         const {
             gender,
-            tabList,
             currentTab,
-            sortList,
             shopitems,
             sortKey
         } = this.state;
@@ -195,8 +131,7 @@ class App extends Component {
                     <FilterBar
                         sortKey={sortKey}
                         onSort={this.onSort}
-                        handleChange={this.handleChange}
-                        sortList={sortList}/>
+                        handleChange={this.handleChange}/>
                     <ShopList
                         sortKey={sortKey}
                         onSort={this.onSort}

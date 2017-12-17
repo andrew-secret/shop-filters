@@ -7,12 +7,13 @@ const sortList = [
     { id: 2, value: 'Man', sortBy: 'MALE'},
 ];
 
-const Tabs = props => {
+const Tabs = (props) => {
 
     return (
         <ul className="tabsList">
             {sortList.map(item => (
             <Tab
+                onSort={props.onSort}
                 key={item.id}
                 {...item}/>
             ))}
