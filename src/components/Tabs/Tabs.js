@@ -13,6 +13,7 @@ const Tabs = (props) => {
         <ul className="tabsList">
             {sortList.map(item => (
             <Tab
+                sortKey={props.sortKey}
                 onSort={props.onSort}
                 key={item.id}
                 {...item}/>
