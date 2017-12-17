@@ -20,3 +20,5 @@ export const updateList = (list, updated) => {
 };
 
 export const partial = (fn, ...args) => fn.bind(null, ...args);
+
+export const formatPrice = (price) => price.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
