@@ -2,14 +2,17 @@ import React from 'react';
 import Tab from '../Tab/Tab';
 import './Tabs.css';
 
+const sortList = [
+    { id: 1, value: 'Woman', sortBy: 'FEMALE'},
+    { id: 2, value: 'Man', sortBy: 'MALE'},
+];
+
 const Tabs = props => {
 
-    return(
+    return (
         <ul className="tabsList">
-            {props.tabList.map(item => (
+            {sortList.map(item => (
             <Tab
-                addActiveClass={props.addActiveClass}
-                sortByGender={props.sortByGender}
                 key={item.id}
                 {...item}/>
             ))}

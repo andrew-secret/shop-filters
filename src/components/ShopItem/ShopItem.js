@@ -1,23 +1,32 @@
 import React from 'react';
+
+import { formatPrice } from '../../lib/shopHelper';
 import './ShopItem.css';
 
-const ShopItem = props => {
+const ShopItem = ({
+    image,
+    model,
+    price
+    }) => {
 
-  return (
+    // const convertPrice = (...price) =>
+    //     parseInt(price);
+
+    return (
     <li className="shopItem">
-        <img src={require(`../../assets/shopitems/${props.image}`)}
-          alt={props.model}/>
+        <img src={require(`../../assets/shopitems/${image}`)}
+            alt={model}/>
 
         <div className="projectDetails">
-          <h3 className="headline">
-            {props.model}
-          </h3>
+            <h3 className="headline">
+            {model}
+            </h3>
         </div>
         <div className="price">
-          {props.price}€
+            {formatPrice(price)}
         </div>
     </li>
-  );
+    );
 };
 
 export default ShopItem;
