@@ -8,8 +8,8 @@ import { StickyContainer } from 'react-sticky';
 const shopitems = [
     {
         id: 1,
-        brand: "PUMA",
-        model: "Vintage retro blue grey PUMA jacket",
+        brand: "Puma",
+        model: "Vintage retro blue grey Puma jacket",
         price: 69.95,
         image: "puma-jacket-green.png",
         gender: "female",

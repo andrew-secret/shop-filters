@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700')
+$medium: 700px
+
 .shopItem
     list-style: none
     background-color: white
@@ -5,5 +8,49 @@
     flex-direction: column
     align-items: center
     margin: 1.5%
-    padding: 2%
-    border-radius: 3px
+    border: 1px solid #ddd
+    transition: box-shadow 300ms ease,border 300ms ease
+    cursor: pointer
+    width: 100%
+
+    @media screen and (min-width: $medium)
+        width: 30%
+
+    &:hover,
+    &:focus
+        box-shadow: 0 6px 14px -6px rgba(black, .4)
+        border: 1px solid #ddd
+
+
+.shopItem__image
+    width: 100%
+
+
+.shopItem__description
+    display: flex
+    justify-content: space-between
+    width: 100%
+    padding: 10px 15px
+    box-sizing: border-box
+
+
+.shopItem__headline
+    font-family: 'Roboto', sans-serif
+    font-weight: 400
+    font-size: 14px
+    color: #595959
+    line-height: 1.75
+    letter-spacing: .8px
+    margin: 0
+
+    strong
+        font-size: 16px
+        display: block
+        color: #595959
+
+.shopItem__price
+    font-family: 'Roboto', sans-serif
+    font-size: 16px
+    color: #595959
+    font-weight: 700
+    letter-spacing: .8px

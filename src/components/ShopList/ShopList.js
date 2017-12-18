@@ -26,7 +26,7 @@ const ShopList = ({shopitems, sortKey, onSort, loadMore, showMore}) => {
             </ul>
             {loadMore < shopitems.length ? (
                 <Button
-                    className="showMore-Button"
+                    className="shopList__showMoreBtn"
                     onClick={showMore}
                     label="Show more" />
             ) : null }

@@ -2,18 +2,24 @@
     list-style: none
     width: 50%
     display: flex
-    color: #4E5056
+    color: #595959
     flex-wrap: wrap
     flex-direction: column
     height: 40px
     align-items: center
     justify-content: center
     cursor: pointer
+    transition: background-color 250ms ease-in, color 250ms ease-in
 
     &.isActive,
-        background-color: #6F8CE3
+        background-color: black
         color: white
 
 
     &:first-child
         border-right: 1px solid #ECECEC
+
+    &:hover,
+    &:focus
+        background-color: black
+        color: white
