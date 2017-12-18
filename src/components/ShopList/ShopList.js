@@ -1,6 +1,7 @@
 import React from 'react';
 import './ShopList.css';
 import ShopItem from '../ShopItem/ShopItem';
+import Button from '../Button/Button';
 import { sortBy } from 'lodash';
 
 const ShopList = ({shopitems, sortKey, onSort, loadMore, showMore}) => {
@@ -13,8 +14,6 @@ const ShopList = ({shopitems, sortKey, onSort, loadMore, showMore}) => {
         MALE: shopitems => sortBy(shopitems, 'gender').reverse(),
     }
 
-    // const loadCount = loadMore ? shopitems.length : 6;
-
     return (
         <div className="wrapper">
             <ul className="shopList">
@@ -25,8 +24,12 @@ const ShopList = ({shopitems, sortKey, onSort, loadMore, showMore}) => {
                 />
             )}
             </ul>
-            <a className="tabItem"
-                onClick={showMore}>Show more</a>
+            {loadMore < shopitems.length ? (
+                <Button
+                    className="showMore-Button"
+                    onClick={showMore}
+                    label="Show more" />
+            ) : null }
         </div>
     );
 };
