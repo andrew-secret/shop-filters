@@ -1,10 +1,11 @@
 import React from 'react';
 import './ShopList.css';
 import ShopItem from '../ShopItem/ShopItem';
+import Button from '../Button/Button';
 import { sortBy } from 'lodash';
 
-const ShopList = ({shopitems, sortKey, onSort}) => {
-  
+const ShopList = ({shopitems, sortKey, onSort, loadMore, showMore}) => {
+
     const SORTS = {
         NONE: shopitems => shopitems,
         PRICE_ASC: shopitems => sortBy(shopitems, 'price'),
@@ -13,25 +14,24 @@ const ShopList = ({shopitems, sortKey, onSort}) => {
         MALE: shopitems => sortBy(shopitems, 'gender').reverse(),
     }
 
-  return (
-    <div className="wrapper">
-      <ul className="shopList">
-        {SORTS[sortKey](shopitems).map(item =>
-          <ShopItem
-            key={item.id}
-            {...item}
-          />
-        )}
-      </ul>
-    </div>
-  );
+    return (
+        <div className="wrapper">
+            <ul className="shopList">
+            {SORTS[sortKey](shopitems).slice(0, loadMore).map(item =>
+                <ShopItem
+                    key={item.id}
+                    {...item}
+                />
+            )}
+            </ul>
+            {loadMore < shopitems.length ? (
+                <Button
+                    className="shopList__showMoreBtn"
+                    onClick={showMore}
+                    label="Show more" />
+            ) : null }
+        </div>
+    );
 };
 
 export default ShopList;
-
-
-// {props.shopitems.map(item => (
-//   <ShopItem 
-//     key={item.id}
-//     {...item}/>
-// ))}

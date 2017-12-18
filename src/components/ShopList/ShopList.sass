@@ -1,11 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:700')
+
+$medium: 700px
+
 .wrapper
-    background-color: #323335
-    margin: 2vh
+    margin: 0
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    @media screen and (min-width: $medium)
+        margin: 2vh
+
 
 .shopList
     display: flex
     justify-content: center
-    max-width: 1180px
     flex-wrap: wrap
     padding: 5px
     margin: 0 auto
+    box-sizing: border-box
+
+    @media screen and (min-width: $medium)
+        max-width: 80vw
+
+
+.shopList__showMoreBtn
+    font-family: 'Playfair Display', serif
+    font-size: 16px
+    transform: scale(1)
+    text-transform: uppercase
+    transform-origin: bottom
+
+    &:hover,
+    &:focus
+        transition: transform 250ms ease-in-out
+        transform: scaleX(2) scaleY(0.8)
