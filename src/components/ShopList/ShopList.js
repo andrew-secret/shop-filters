@@ -4,7 +4,14 @@ import ShopItem from '../ShopItem/ShopItem';
 import Button from '../Button/Button';
 import { sortBy } from 'lodash';
 
-const ShopList = ({shopitems, sortKey, onSort, loadMore, showMore}) => {
+const ShopList = ({
+    shopitems, 
+    sortKey, 
+    onSort, 
+    loadMore, 
+    showMore,
+    updateRating
+}) => {
 
     const SORTS = {
         NONE: shopitems => shopitems,
@@ -19,6 +26,7 @@ const ShopList = ({shopitems, sortKey, onSort, loadMore, showMore}) => {
             <ul className="shopList">
             {SORTS[sortKey](shopitems).slice(0, loadMore).map(item =>
                 <ShopItem
+                    updateRating={updateRating}
                     key={item.id}
                     {...item}
                 />

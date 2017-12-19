@@ -3,6 +3,8 @@ import "./App.css";
 import Header from './components/Header/Header';
 import ShopList from "./components/ShopList/ShopList";
 import FilterBar from "./components/FilterBar/FilterBar";
+
+import { findById, incrementRating, updateShopItems } from './lib/scripts/shopHelper';
 import { StickyContainer } from 'react-sticky';
 
 const shopitems = [
@@ -151,7 +153,7 @@ const shopitems = [
         rating: false,
     },
     {
-        id: 5,
+        id: 17,
         brand: "Polar",
         model: "Polar 90´s Jeans Light Blue",
         price: 84.90,
@@ -160,7 +162,7 @@ const shopitems = [
         rating: false,
     },
     {
-        id: 17,
+        id: 18,
         brand: "Magenta",
         model: "Magenta Plant Wool Red 6 Panel",
         price: 39.90,
@@ -169,7 +171,7 @@ const shopitems = [
         rating: false,
     },
     {
-        id: 18,
+        id: 19,
         brand: "Puma",
         model: "Sommer-Playsuit",
         price: 79.90,
@@ -178,7 +180,7 @@ const shopitems = [
         rating: false,
     },
     {
-        id: 19,
+        id: 20,
         brand: "Polar",
         model: "Top VIBERRY",
         price: 149.90,
@@ -187,7 +189,7 @@ const shopitems = [
         rating: false,
     },
     {
-        id: 20,
+        id: 21,
         brand: "Helas",
         model: "Hélas UMB High Def Tee White",
         price: 34.90,
@@ -196,7 +198,7 @@ const shopitems = [
         rating: false,
     },
     {
-        id: 21,
+        id: 22,
         brand: "Polar",
         model: "Polar 90´s Jeans Blue",
         price: 89.95,
@@ -205,7 +207,7 @@ const shopitems = [
         rating: false,
     },
     {
-        id: 22,
+        id: 23,
         brand: "Adidas Alltimers",
         model: "Adidas x Alltimers Jersey Blue/White/Scarlet",
         price: 59.90,
@@ -214,7 +216,7 @@ const shopitems = [
         rating: false,
     },
     {
-        id: 23,
+        id: 24,
         brand: "Magenta",
         model: "Magenta Plant Wool Red 6 Panel  ",
         price: 39.90,
@@ -238,11 +240,21 @@ class App extends Component {
         this.onSort = this.onSort.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.showMore = this.showMore.bind(this);
+        this.updateRating = this.updateRating.bind(this);
     }
 
     showMore() {
         this.setState({
             loadMore: this.state.loadMore + 9
+        })
+    }
+
+    updateRating(id) {
+        const shopItem = findById(id, shopitems);
+        const incremented = incrementRating(shopItem);
+        const updatedList = updateShopItems(shopitems, incremented);
+        this.setState({
+            shopitems: updatedList
         })
     }
 
@@ -276,6 +288,7 @@ class App extends Component {
                         onSort={this.onSort}
                         loadMore={loadMore}
                         showMore={this.showMore}
+                        updateRating={this.updateRating}
                         shopitems={shopitems}/>
                 </StickyContainer>
             </div>
