@@ -7,11 +7,24 @@ import { sortBy } from 'lodash';
 const ShopList = ({
     shopitems, 
     sortKey, 
-    onSort, 
     loadMore, 
     showMore,
     updateRating
 }) => {
+
+    const checkForLikes = () => {
+        let rating_sum = 0;
+        shopitems.forEach((obj) => {
+            rating_sum += obj['rating'];
+        });
+
+        const result = rating_sum > 0 ? (
+            true
+        ) : (
+            false
+        )
+        return result;
+    }
 
     const SORTS = {
         NONE: shopitems => shopitems,
@@ -19,6 +32,8 @@ const ShopList = ({
         PRICE_DESC: shopitems => sortBy(shopitems, 'price').reverse(),
         FEMALE: shopitems => sortBy(shopitems, 'gender'),
         MALE: shopitems => sortBy(shopitems, 'gender').reverse(),
+        RATING_ASC: shopitems => sortBy(shopitems, 'rating'),
+        RATING_DESC: shopitems => checkForLikes() ? sortBy(shopitems, 'rating').reverse() : shopitems,
     }
 
     return (
