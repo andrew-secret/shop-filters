@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700')
 $medium: 700px
 
+@keyframes pump-your-heart
+    0%
+        transform: scale(1)
+    50%
+        transform: scale(1.5)
+    
+    100%
+        transform: scale(1) 
+
+
 .shopItem
     list-style: none
     background-color: white
@@ -12,6 +22,7 @@ $medium: 700px
     transition: box-shadow 300ms ease,border 300ms ease
     cursor: pointer
     width: 100%
+    position: relative
 
     @media screen and (min-width: $medium)
         width: 30%
@@ -20,6 +31,36 @@ $medium: 700px
     &:focus
         box-shadow: 0 6px 14px -6px rgba(black, .4)
         border: 1px solid #ddd
+
+.shopItem__rating
+    position: absolute
+    top: 20px
+    left: 20px
+    background-color: rgba(white, .5)
+    padding: 10px
+    border-radius: 50%
+
+    &:hover,
+    &:focus
+        transition: transform 150ms ease-in
+        transform: scale(1.1)
+
+        .shopItem__heartOutline
+            transition: transform 250ms ease-in
+            transform: scale(1.2)
+
+
+svg.shopItem__heartOutline
+    width: 22px
+    height: 22px
+    fill: #4E5056
+
+
+.shopItem__heart
+    fill: red
+    width: 24px
+    height: 24px
+    animation: pump-your-heart 200ms
 
 
 .shopItem__image
