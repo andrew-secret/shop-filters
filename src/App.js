@@ -3,6 +3,8 @@ import "./App.css";
 import Header from './components/Header/Header';
 import ShopList from "./components/ShopList/ShopList";
 import FilterBar from "./components/FilterBar/FilterBar";
+
+import { findById, incrementRating, updateShopItems } from './lib/scripts/shopHelper';
 import { StickyContainer } from 'react-sticky';
 
 const shopitems = [
@@ -13,7 +15,7 @@ const shopitems = [
         price: 69.95,
         image: "puma-jacket-green.png",
         gender: "female",
-        rating: false,
+        rating: 0,
     },
     {
         id: 2,
@@ -22,7 +24,7 @@ const shopitems = [
         price: 124.99,
         image: "polar-sweater-navy.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
         id: 3,
@@ -31,7 +33,7 @@ const shopitems = [
         price: 269.97,
         image: "puma-jacket-pink.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
         id: 4,
@@ -40,7 +42,7 @@ const shopitems = [
         price: 129.90,
         image: "adidas-jacket-neon.png",
         gender: "female",
-        rating: false,
+        rating: 0,
     },
     {
         id: 5,
@@ -49,7 +51,7 @@ const shopitems = [
         price: 84.90,
         image: "polar-jeans-blue.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
         id: 6,
@@ -58,7 +60,7 @@ const shopitems = [
         price: 39.90,
         image: "magenta-cap-red.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
         id: 7,
@@ -67,7 +69,7 @@ const shopitems = [
         price: 79.90,
         image: "puma-jacket.png",
         gender: "female",
-        rating: false,
+        rating: 0,
     },
     {
         id: 8,
@@ -76,7 +78,7 @@ const shopitems = [
         price: 149.90,
         image: "polar-sweater-green.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
         id: 9,
@@ -85,7 +87,7 @@ const shopitems = [
         price: 34.90,
         image: "helas-tshirt.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
         id: 10,
@@ -94,7 +96,7 @@ const shopitems = [
         price: 89.95,
         image: "polar-jeans.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
         id: 11,
@@ -103,7 +105,7 @@ const shopitems = [
         price: 59.90,
         image: "adidas-longsleeve.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
         id: 12,
@@ -112,7 +114,7 @@ const shopitems = [
         price: 39.90,
         image: "magenta-cap.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
         id: 13,
@@ -121,7 +123,7 @@ const shopitems = [
         price: 69.95,
         image: "puma-jacket-green.png",
         gender: "female",
-        rating: false,
+        rating: 0,
     },
     {
         id: 14,
@@ -130,7 +132,7 @@ const shopitems = [
         price: 124.99,
         image: "polar-sweater-navy.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
         id: 15,
@@ -139,7 +141,7 @@ const shopitems = [
         price: 269.97,
         image: "puma-jacket-pink.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
         id: 16,
@@ -148,79 +150,79 @@ const shopitems = [
         price: 129.90,
         image: "adidas-jacket-neon.png",
         gender: "female",
-        rating: false,
+        rating: 0,
     },
     {
-        id: 5,
+        id: 17,
         brand: "Polar",
         model: "Polar 90´s Jeans Light Blue",
         price: 84.90,
         image: "polar-jeans-blue.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
-        id: 17,
+        id: 18,
         brand: "Magenta",
         model: "Magenta Plant Wool Red 6 Panel",
         price: 39.90,
         image: "magenta-cap-red.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
-        id: 18,
+        id: 19,
         brand: "Puma",
         model: "Sommer-Playsuit",
         price: 79.90,
         image: "puma-jacket.png",
         gender: "female",
-        rating: false,
+        rating: 0,
     },
     {
-        id: 19,
+        id: 20,
         brand: "Polar",
         model: "Top VIBERRY",
         price: 149.90,
         image: "polar-sweater-green.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
-        id: 20,
+        id: 21,
         brand: "Helas",
         model: "Hélas UMB High Def Tee White",
         price: 34.90,
         image: "helas-tshirt.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
-        id: 21,
+        id: 22,
         brand: "Polar",
         model: "Polar 90´s Jeans Blue",
         price: 89.95,
         image: "polar-jeans.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
-        id: 22,
+        id: 23,
         brand: "Adidas Alltimers",
         model: "Adidas x Alltimers Jersey Blue/White/Scarlet",
         price: 59.90,
         image: "adidas-longsleeve.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     },
     {
-        id: 23,
+        id: 24,
         brand: "Magenta",
         model: "Magenta Plant Wool Red 6 Panel  ",
         price: 39.90,
         image: "magenta-cap.png",
         gender: "male",
-        rating: false,
+        rating: 0,
     }
 ];
 
@@ -238,11 +240,21 @@ class App extends Component {
         this.onSort = this.onSort.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.showMore = this.showMore.bind(this);
+        this.updateRating = this.updateRating.bind(this);
     }
 
     showMore() {
         this.setState({
             loadMore: this.state.loadMore + 9
+        })
+    }
+
+    updateRating(id) {
+        const shopItem = findById(id, shopitems);
+        const incremented = incrementRating(shopItem);
+        const updatedList = updateShopItems(shopitems, incremented);
+        this.setState({
+            shopitems: updatedList
         })
     }
 
@@ -276,6 +288,7 @@ class App extends Component {
                         onSort={this.onSort}
                         loadMore={loadMore}
                         showMore={this.showMore}
+                        updateRating={this.updateRating}
                         shopitems={shopitems}/>
                 </StickyContainer>
             </div>
