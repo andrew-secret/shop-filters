@@ -1,7 +1,7 @@
 export const formatPrice = price => 
-        price.toLocaleString(
-            'de-DE', { style: 'currency', currency: 'EUR' 
-        });
+    price.toLocaleString(
+        'de-DE', { style: 'currency', currency: 'EUR' 
+    });
 
 export const findById = (id, list) => 
     list.find(item => item.id === id);
