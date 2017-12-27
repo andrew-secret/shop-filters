@@ -2,19 +2,18 @@ import React from 'react';
 import Tab from '../Tab/Tab';
 import './Tabs.css';
 
-const sortList = [
-    { id: 1, value: 'Woman', sortBy: 'FEMALE'},
-    { id: 2, value: 'Man', sortBy: 'MALE'},
-];
-
-const Tabs = (props) => {
+const Tabs = ({
+    sortList,
+    sortKey,
+    onSort
+}) => {
 
     return (
         <ul className="tabsList">
             {sortList.map(item => (
             <Tab
-                sortKey={props.sortKey}
-                onSort={props.onSort}
+                sortKey={sortKey}
+                onSort={onSort}
                 key={item.id}
                 {...item}/>
             ))}

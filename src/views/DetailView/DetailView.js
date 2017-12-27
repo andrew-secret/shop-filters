@@ -2,7 +2,17 @@ import React from 'react';
 import Button from '../../components/Button/Button';
 import { findById } from '../../lib/scripts/shopHelper';
 import { formatPrice } from '../../lib/scripts/shopHelper';
+import SelectList from '../../components/SelectList/SelectList';
 import './DetailView.css';
+
+const selectList = [
+    {id: 1, value: 'S'},
+    {id: 2, value: 'M'},
+    {id: 3, value: 'L'},
+    {id: 4, value: 'XL'}
+];
+
+const defaultValue = 'Select your size:';
 
 const DetailView = props => {
     const id = parseInt(props.match.params.id);
@@ -28,6 +38,10 @@ const DetailView = props => {
                 <span className="detailView__price">
                     {price}
                 </span>
+                <SelectList
+                    className="detailView__select"
+                    defaultValue={defaultValue}
+                    selectList={selectList}/>
                 <Button
                     label={ADD_TO_CARRT}
                     className="detailView__button"

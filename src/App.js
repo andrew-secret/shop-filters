@@ -13,7 +13,6 @@ import { base } from './base';
 import * as routes from './constants/routes';
 
 
-
 class App extends Component {
 
     constructor(props) {
