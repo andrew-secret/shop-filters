@@ -30,7 +30,9 @@ const ShopItem = ({
                     <HeartOutlineIcon className="shopItem__heartOutline" />
                 )}
             </div>
-            <Link to={`detailView/${id}/`}>
+            <Link
+                className="shopItem__link"
+                to={`detailView/${id}/`}>
                 <img src={require(`../../assets/shopitems/${image}`)}
                     className="shopItem__image"
                     alt={model}/>
