@@ -4,7 +4,6 @@ import HeartOutlineIcon from 'react-icons/lib/ti/heart-outline'
 import HeartIcon from 'react-icons/lib/ti/heart'
 import { formatPrice } from '../../lib/scripts/shopHelper';
 import { Link } from 'react-router-dom';
-import DetailView from '../../views/DetailView/DetailView';
 import './ShopItem.css';
 
 const ShopItem = ({

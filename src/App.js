@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import Header from './components/Header/Header';
-import ShopList from "./components/ShopList/ShopList";
-import FilterBar from "./components/FilterBar/FilterBar";
 import DetailView from './views/DetailView/DetailView';
 import ShopView from './views/ShopView/ShopView';
 

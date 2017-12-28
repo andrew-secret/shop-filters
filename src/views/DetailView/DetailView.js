@@ -15,11 +15,10 @@ const selectList = [
 const defaultValue = 'Select your size:';
 
 const DetailView = props => {
-    const id = parseInt(props.match.params.id);
-    const idTypeOf = typeof parseInt(props.match.params.id);
+    const id = parseInt(props.match.params.id, 10);
     const shopItem = findById(id, props.shopitems);
     const price = formatPrice(shopItem.price);
-    const ADD_TO_CARRT = 'Add to cart';
+    const addToCart = 'Add to cart';
 
     return (
         <div className="detailView">
@@ -43,7 +42,7 @@ const DetailView = props => {
                     defaultValue={defaultValue}
                     selectList={selectList}/>
                 <Button
-                    label={ADD_TO_CARRT}
+                    label={addToCart}
                     className="detailView__button"
                 />
             </div>
