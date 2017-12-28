@@ -18,7 +18,6 @@ const ShopItem = ({
 
     return (
         <li className="shopItem">
-            
             <div 
                 className="shopItem__rating"
                 onClick={() => updateRating(id)}>
