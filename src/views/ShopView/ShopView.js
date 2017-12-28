@@ -2,20 +2,28 @@ import React from 'react';
 import FilterBar from '../../components/FilterBar/FilterBar';
 import ShopList from '../../components/ShopList/ShopList';
 
-const ShopView = (props) => {
+const ShopView = ({
+    sortKey,
+    onSort,
+    handleChange,
+    loadMore,
+    showMore,
+    updateRating,
+    shopitems
+}) => {
     return (
         <div>
             <FilterBar
-                sortKey={props.sortKey}
-                onSort={props.onSort}
-                handleChange={props.handleChange}/>
+                sortKey={sortKey}
+                onSort={onSort}
+                handleChange={handleChange}/>
             <ShopList
-                sortKey={props.sortKey}
-                onSort={props.onSort}
-                loadMore={props.loadMore}
-                showMore={props.showMore}
-                updateRating={props.updateRating}
-                shopitems={props.shopitems}/>
+                sortKey={sortKey}
+                onSort={onSort}
+                loadMore={loadMore}
+                showMore={showMore}
+                updateRating={updateRating}
+                shopitems={shopitems}/>
         </div>
     );
 }

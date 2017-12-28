@@ -16,7 +16,7 @@ const Header = props => {
             </div>
             <img src={logo}
                 className="logo"
-                alt="seesh logo"/>
+                alt="2ndStore logo"/>
         </header>
     )
 };

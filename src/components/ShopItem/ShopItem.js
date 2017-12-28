@@ -14,8 +14,7 @@ const ShopItem = ({
     price,
     rating,
     updateRating,
-    id,
-    props
+    id
     }) => {
 
     return (
