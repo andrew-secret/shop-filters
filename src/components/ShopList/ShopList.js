@@ -3,6 +3,7 @@ import './ShopList.css';
 import ShopItem from '../ShopItem/ShopItem';
 import Button from '../Button/Button';
 import { sortBy } from 'lodash';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 const ShopList = ({
     shopitems, 
@@ -25,7 +26,7 @@ const ShopList = ({
         )
         return result;
     }
-    console.log('shopitems', shopitems);
+
     const SORTS = {
         NONE: shopitems => shopitems,
         PRICE_ASC: shopitems => sortBy(shopitems, 'price'),
@@ -38,6 +39,10 @@ const ShopList = ({
 
     return (
         <div className="wrapper">
+            <CSSTransitionGroup
+                transitionName="example"
+                transitionAppear={true}
+                transitionAppearTimeout={500}>
                 <ul className="shopList">
                 {SORTS[sortKey](shopitems).slice(0, loadMore).map(item =>
                     <ShopItem
@@ -47,6 +52,7 @@ const ShopList = ({
                     />
                 )}
                 </ul>
+            </CSSTransitionGroup>
             {loadMore < shopitems.length ? (
                 <Button
                     className="shopList__showMoreBtn"

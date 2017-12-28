@@ -3,6 +3,7 @@ import Button from '../../components/Button/Button';
 import { findById } from '../../lib/scripts/shopHelper';
 import { formatPrice } from '../../lib/scripts/shopHelper';
 import SelectList from '../../components/SelectList/SelectList';
+import { CSSTransitionGroup } from 'react-transition-group';
 import './DetailView.css';
 
 const selectList = [
@@ -21,32 +22,37 @@ const DetailView = props => {
     const addToCart = 'Add to cart';
 
     return (
-        <div className="detailView">
-            <div className="detailView__left">
-                <img src={require(`../../assets/shopitems/${shopItem.image}`)}
-                    className="shopItem__image"
-                    alt={shopItem.model}/>
+        <CSSTransitionGroup
+            transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={500}>
+            <div className="detailView">
+                <div className="detailView__left">
+                    <img src={require(`../../assets/shopitems/${shopItem.image}`)}
+                        className="shopItem__image"
+                        alt={shopItem.model}/>
+                </div>
+                <div className="detailView__right">
+                    <span className="detailView__brand">
+                        {shopItem.brand}
+                    </span>
+                    <h1 className="detailView__h1">
+                        {shopItem.model}
+                    </h1>
+                    <span className="detailView__price">
+                        {price}
+                    </span>
+                    <SelectList
+                        className="detailView__select"
+                        defaultValue={defaultValue}
+                        selectList={selectList}/>
+                    <Button
+                        label={addToCart}
+                        className="detailView__button"
+                    />
+                </div>
             </div>
-            <div className="detailView__right">
-                <span className="detailView__brand">
-                    {shopItem.brand}
-                </span>
-                <h1 className="detailView__h1">
-                    {shopItem.model}
-                </h1>
-                <span className="detailView__price">
-                    {price}
-                </span>
-                <SelectList
-                    className="detailView__select"
-                    defaultValue={defaultValue}
-                    selectList={selectList}/>
-                <Button
-                    label={addToCart}
-                    className="detailView__button"
-                />
-            </div>
-        </div>
+        </CSSTransitionGroup>
     );
 }
 
