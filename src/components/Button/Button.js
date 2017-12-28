@@ -14,10 +14,12 @@ const Button = ({
 
     return(
         <button 
-        className={buttonClasses}
-        type={type}
-        onClick={onClick}>
-            {label}
+            className={buttonClasses}
+            type={type}
+            onClick={onClick}>
+            <span className="buttonText">
+                {label}
+            </span>
         </button>
     );
 }

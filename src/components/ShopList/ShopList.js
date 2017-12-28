@@ -25,7 +25,7 @@ const ShopList = ({
         )
         return result;
     }
-
+    console.log('shopitems', shopitems);
     const SORTS = {
         NONE: shopitems => shopitems,
         PRICE_ASC: shopitems => sortBy(shopitems, 'price'),
@@ -38,15 +38,15 @@ const ShopList = ({
 
     return (
         <div className="wrapper">
-            <ul className="shopList">
-            {SORTS[sortKey](shopitems).slice(0, loadMore).map(item =>
-                <ShopItem
-                    updateRating={updateRating}
-                    key={item.id}
-                    {...item}
-                />
-            )}
-            </ul>
+                <ul className="shopList">
+                {SORTS[sortKey](shopitems).slice(0, loadMore).map(item =>
+                    <ShopItem
+                        updateRating={updateRating}
+                        key={item.id}
+                        {...item}
+                    />
+                )}
+                </ul>
             {loadMore < shopitems.length ? (
                 <Button
                     className="shopList__showMoreBtn"

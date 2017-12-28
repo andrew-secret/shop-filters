@@ -1,36 +1,40 @@
 import React from 'react';
 import MdKeyboardArrowDown from 'react-icons/lib/md/keyboard-arrow-down';
+import classNames from 'classnames';
 import './SelectList.css';
 
-const sortList = [
-    { id: 1, value: 'Price: low to high', sortBy: 'PRICE_ASC'},
-    { id: 2, value: 'Price: high to low', sortBy: 'PRICE_DESC'},
-    { id: 3, value: 'Rating: low to high', sortBy: 'RATING_ASC'},
-    { id: 4, value: 'Rating: high to low', sortBy: 'RATING_DESC'},
-];
+const SelectList = ({
+    defaultValue,
+    handleChange,
+    selectList,
+    className
+}) => {
 
-const SelectList = (props) =>
-    <div className="selectListWrapper">
-        <select 
-            className="SelectList"
-            defaultValue="Sort By:"
-            onChange={props.handleChange}>
-            <option
-                defaultValue="Sort By:"
-                disabled>
-                Sort By:
-            </option>
-            {sortList.map(item => (
+    const selectClasses = classNames(['selectListWrapper'], className);
+
+    return (
+        <div className={selectClasses}>
+            <select 
+                className="SelectList"
+                defaultValue={defaultValue}
+                onChange={handleChange}>
                 <option
-                    value={item.sortBy}
-                    key={item.id}>
-                    {item.value}
+                    defaultValue={defaultValue}
+                    disabled>
+                    {defaultValue}
                 </option>
-            ))}
-         
-        </select>
-        <MdKeyboardArrowDown className="SelectListIcon"/>
-    </div>
-
+                {selectList.map(item => (
+                    <option
+                        value={item.sortBy}
+                        key={item.id}>
+                        {item.value}
+                    </option>
+                ))}
+            
+            </select>
+            <MdKeyboardArrowDown className="SelectListIcon"/>
+        </div>
+    );
+}
 export default SelectList;
 
