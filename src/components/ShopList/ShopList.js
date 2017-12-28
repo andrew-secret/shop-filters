@@ -26,7 +26,7 @@ const ShopList = ({
         )
         return result;
     }
-    console.log('shopitems', shopitems);
+
     const SORTS = {
         NONE: shopitems => shopitems,
         PRICE_ASC: shopitems => sortBy(shopitems, 'price'),
