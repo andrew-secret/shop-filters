@@ -1,12 +1,12 @@
 import React from 'react';
 import logo from '../../assets/2ndStore-logo.svg';
-import './Header.css';
+import './Navigation.css';
 
 
-const Header = props => {
+const Navigation = props => {
     return(
-        <header className="header">
-            <div className="header-accent">
+        <nav className="Navigation">
+            <div className="Navigation-accent">
                 <span className="stripe-element stripe-element--1">
                 </span>
                 <span className="stripe-element stripe-element--2">
@@ -17,8 +17,8 @@ const Header = props => {
             <img src={logo}
                 className="logo"
                 alt="2ndStore logo"/>
-        </header>
+        </nav>
     )
 };
 
-export default Header;
+export default Navigation;

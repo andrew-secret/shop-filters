@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Header from './components/Header/Header';
+import Navigation from './components/Navigation/Navigation';
 import DetailView from './views/DetailView/DetailView';
 import ShopView from './views/ShopView/ShopView';
 import StartpageView from './views/StartpageView/StartpageView';
@@ -294,7 +294,7 @@ class App extends Component {
 
         return (
             <div className="App">
-                <Header/>
+                <Navigation/>
                     <StickyContainer>
                         <Router>
                             <div>
