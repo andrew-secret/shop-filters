@@ -3,6 +3,7 @@ import "./App.css";
 import Header from './components/Header/Header';
 import DetailView from './views/DetailView/DetailView';
 import ShopView from './views/ShopView/ShopView';
+import StartpageView from './views/StartpageView/StartpageView';
 
 import { findById, incrementRating, updateShopItems } from './lib/scripts/shopHelper';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -297,6 +298,13 @@ class App extends Component {
                     <StickyContainer>
                         <Router>
                             <div>
+                            <Route
+                                exact
+                                path={routes.STARTPAGE_VIEW}
+                                render={(routeProps) => (
+                                    <StartpageView />
+                                )}
+                            />
                             <Route
                                 exact 
                                 path={routes.SHOP_VIEW} 
