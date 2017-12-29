@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/2ndStore-logo.svg';
+import logo from '../../assets/2ndStore-black.svg';
 import './Navigation.css';
 
 
