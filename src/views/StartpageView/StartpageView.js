@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../../components/Header/Header';
+import TeaserSection from '../../components/TeaserSection/TeaserSection';
 import './StartpageView.css';
 
 
@@ -15,6 +16,11 @@ const navigation = [
 const StartpageView = (props) =>
     <div className="startpageView">
         <Header navigation={navigation} />
+        <TeaserSection 
+            headline="New arrivals"
+            number="2018"
+            bigImage="startpage/orange-woman.png"
+            smallImage="startpage/benjamin-voros.png" />
     </div>
 
 export default StartpageView;
