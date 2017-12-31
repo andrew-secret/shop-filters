@@ -5,7 +5,9 @@ const TeaserSection = ({
     headline,
     number,
     bigImage,
-    smallImage
+    smallImage,
+    bigImageAlt,
+    smallImageAlt
 }) =>
     <section className="TeaserSection">
         <div className="TeaserSection__title">
@@ -20,7 +22,8 @@ const TeaserSection = ({
         </div>
         <div className="TeaserSection__visual">
             <img src={require(`../../assets/${bigImage}`)}
-                className="TeaserSection__img" />
+                className="TeaserSection__img"
+                alt={bigImageAlt}/>
         </div>
         <div className="TeaserSection__red">
         </div>
@@ -28,7 +31,8 @@ const TeaserSection = ({
         </div>
         <div className="TeaserSection__visualSmall">
             <img src={require(`../../assets/${smallImage}`)}
-                className="TeaserSection__img" />
+                className="TeaserSection__img"
+                alt={smallImageAlt}/>
         </div>
     </section>
 

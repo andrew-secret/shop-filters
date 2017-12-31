@@ -21,7 +21,9 @@ const StartpageView = (props) =>
             headline="New arrivals"
             number="2018"
             bigImage="startpage/orange-woman.png"
-            smallImage="startpage/benjamin-voros.png" />
+            bigImageAlt="orange coat"
+            smallImage="startpage/benjamin-voros.png"
+            smallImageAlt="blue jeans jacket"/>
         <ContentSection 
             headline="the new hype – 2ndStore"
             copy={text}
