@@ -1,0 +1,86 @@
+$break-small: 520px
+$break-large: 1024px
+
+
+.TeaserSection
+    display: grid
+    grid-template-columns: repeat(12, 1fr)
+    grid-template-rows: 400px 200px
+    grid-template-areas: "c c c c c n n v v v v v" "r r r y y y y s s s s s"
+
+    @media screen and (max-width: $break-small)
+        grid-template-areas: "c c c c c c c c c n n n" "v v v v v v v v v v v v" "r r y y s s s s s s s s"
+        grid-template-rows: 200px 200px
+
+
+.TeaserSection__title
+    display: flex
+    flex-direction: column
+    padding: 15px
+    grid-area: c
+
+
+.TeaserSection__number
+    grid-area: n
+    display: flex
+    padding: 15px
+
+
+.TeaserSection__visual
+    grid-area: v
+
+
+.TeaserSection__red
+    grid-area: r
+    background-color: #EB3D41
+
+
+.TeaserSection__yellow
+    grid-area: y
+    background-color: #F5CF54
+
+
+.TeaserSection__visualSmall
+    grid-area: s
+
+
+.TeaserSection__img
+    width: 100%
+    height: 100%
+    object-fit: cover
+
+
+//
+// Content
+//
+
+.TeaserSection__headline
+    font-family: 'Playfair Display', serif
+    font-size: 60px
+    margin: 0
+    background-color: white
+    display: inline-block
+    position: relative
+
+    @media screen and (max-width: $break-small)
+        font-size: 11vw
+
+    &:before
+        content: ''
+        background: #04467F
+        width: 3em
+        height: 3em
+        position: absolute
+        border-radius: 50%
+        z-index: -1
+        top: 0
+        left: 30px
+
+
+.TeaserSection__year
+    font-family: 'Playfair Display', serif
+    font-size: 11vw
+    word-break: break-all
+    line-height: 1
+    align-self: flex-end
+    text-align: right

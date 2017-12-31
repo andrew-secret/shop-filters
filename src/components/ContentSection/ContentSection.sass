@@ -1,0 +1,86 @@
+$break-small: 520px
+$break-large: 1024px
+
+.contentSection
+    margin: 50px 0
+    display: grid
+    grid-template-columns: repeat(12, 1fr)
+    grid-template-rows: auto auto
+    grid-template-areas: "h h h c c c c c c c c c" "b b b i i i i i i i i i"
+
+    @media screen and (max-width: $break-small)
+        grid-template-areas: "h h h h h h h h h h h h" "c c c c c c c c c c c c" "i i i i i i i i i i i i" "b b b b b b b b b b b b"
+        grid-template-rows: auto auto
+
+
+.contentSection__headline
+    grid-area: h
+    font-size: 14px
+    padding: 15px
+
+
+.contentSection__copy
+    grid-area: c
+    font-size: 22px
+    line-height: 1.75
+    max-width: 550px
+
+    @media screen and (max-width: $break-small)
+        padding: 15px
+
+
+.contentSection__images
+    grid-area: i
+
+
+.contentSection__image
+    width: 33vw
+    // max-width: 500px
+    margin: 15px
+    box-sizing: border-box
+
+    &:first-child
+        margin-left: 0
+    
+    @media screen and (max-width: $break-small)
+        margin: 0
+        width: 50%
+
+
+.contentSection__wrapper
+    display: flex
+    align-items: flex-end
+    grid-area: b
+    padding: 15px
+
+    @media screen and (max-width: $break-large)
+        justify-content: center
+
+
+.contentSection__btn
+    font-family: 'Playfair Display', serif
+    font-size: 20px
+    font-weight: 300
+    padding: 20px 50px
+    position: relative
+    z-index: 0
+
+    @media screen and (max-width: $break-large)
+        padding: 10px 50px
+
+    &:before
+        content: ''
+        position: absolute
+        height: 100%
+        width: 100%
+        opacity: 0
+        top: 0
+        left: 0
+        background-image: linear-gradient(45deg, #ED1385 0%, #D602F2 50%, #3700FF 100%)
+        transition: opacity 200ms ease-in
+        z-index: -1
+
+    &:hover,
+    &:focus 
+        &:before
+            opacity: 1
