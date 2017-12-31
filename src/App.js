@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Navigation from './components/Navigation/Navigation';
+import Footer from './components/Footer/Footer';
 import DetailView from './views/DetailView/DetailView';
 import ShopView from './views/ShopView/ShopView';
 import StartpageView from './views/StartpageView/StartpageView';
@@ -232,6 +233,15 @@ const shopitems = [
     }
 ];
 
+const navigation = [
+    { id: 1, value: 'New in', link: '#' },
+    { id: 2, value: 'Coats & Jackets', link: '#' },
+    { id: 3, value: 'Dresses', link: '#' },
+    { id: 4, value: 'Tops', link: '#' },
+    { id: 5, value: 'Knitwear', link: '#' },
+    { id: 6, value: 'Jeans', link: '#' }
+];
+
 class App extends Component {
 
     constructor(props) {
@@ -294,7 +304,7 @@ class App extends Component {
 
         return (
             <div className="App">
-                <Navigation/>
+                <Navigation />
                     <StickyContainer>
                         <Router>
                             <div>
@@ -302,7 +312,8 @@ class App extends Component {
                                 exact
                                 path={routes.STARTPAGE_VIEW}
                                 render={(routeProps) => (
-                                    <StartpageView />
+                                    <StartpageView 
+                                        navigation={navigation}/>
                                 )}
                             />
                             <Route
@@ -327,6 +338,7 @@ class App extends Component {
                             </div>
                         </Router>
                     </StickyContainer>
+                <Footer navigation={navigation}/>
             </div>
         );
     }

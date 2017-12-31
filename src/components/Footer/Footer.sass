@@ -1,0 +1,101 @@
+$break-small: 520px
+$break-large: 1024px
+
+.footer
+    display: grid
+    grid-template-columns: repeat(12, 1fr)
+    grid-template-rows: 80px 300px
+    grid-template-areas: "g g g g dg dg 0 0 0 0 0 0" "o o n n s s s s s s s s"
+
+    @media screen and (max-width: $break-large)
+        grid-template-areas: "g g g g dg dg 0 0 0 0 0 0" "o o n n n s s s s s s s"
+
+    @media screen and (max-width: $break-small)
+        grid-template-areas: "g g 0 0 0 0 0 0 0 0 0 0" "o o n n n n n n n n n n" "s s s s s s s s s s s s"
+        grid-template-rows: 50px auto auto
+        margin-bottom: 50px
+
+
+.footer__gray
+    grid-area: g
+    background-color: #F5F5F5
+
+
+.footer__darkGray
+    grid-area: dg
+    background-color: #DCDCDC
+
+
+.footer__orange
+    grid-area: o
+    background-color: #F5A623
+    padding: 15px
+
+
+.footer__logo
+    transform: rotate(90deg) translateY(-25px)
+    transform-origin: top left
+
+.footer__navigation
+    grid-area: n
+
+.footer__navigationList
+    margin: 0
+    padding: 15px
+
+
+.footer__navigationListItem
+    margin: 0
+    padding: 0
+    list-style: none
+
+
+.footer__navigationListItem
+    a:link,
+    a:visited
+        text-decoration: none
+        color: black
+        transition: all 500ms ease
+        position: relative
+
+        &:after
+            position: absolute
+            bottom: 0
+            left: 0
+            top: 27px
+            right: 0
+            width: 0%
+            height: 4px
+            content: ""
+            color: transparent
+            background: black
+            transition: all 200ms ease-in
+
+        &:hover:after
+            width: 100%
+            z-index: 0
+            animation: fill 1s forwards
+
+
+.footer__navigationLink
+    list-style: none
+    padding: 0
+    margin: 0
+    font-weight: 700
+    line-height: 1.25
+    font-size: 25px
+    cursor: pointer
+
+
+.footer__social
+    grid-area: s
+    background-color: #EFEFEF
+    display: flex
+    align-items: flex-end
+    padding: 25px
+
+
+.footer__copy
+    margin: 0
+    font-weight: 300
+    font-size: 16px
