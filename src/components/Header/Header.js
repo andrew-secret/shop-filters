@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 const Header = (props) =>
     <header className="startpageHeader">
+        {console.log('props', props)}
         <div className="startpageHeader__visual">
         </div>
         <div className="startpageHeader__red">
@@ -24,9 +26,9 @@ const Header = (props) =>
                 {props.navigation.map(item =>
                     <li key={item.id} 
                         className="navigationItem">
-                        <a href={item.link}>
+                        <Link to="/shopView">
                             {item.value}
-                        </a>
+                        </Link>
                     </li>
                 )}
             </ul>

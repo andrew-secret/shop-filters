@@ -305,40 +305,41 @@ class App extends Component {
         return (
             <div className="App">
                 <Navigation />
-                    <StickyContainer>
-                        <Router>
-                            <div>
-                            <Route
-                                exact
-                                path={routes.STARTPAGE_VIEW}
-                                render={(routeProps) => (
-                                    <StartpageView 
-                                        navigation={navigation}/>
-                                )}
-                            />
-                            <Route
-                                exact 
-                                path={routes.SHOP_VIEW} 
-                                render={(routeProps) => (
-                                    <ShopView
-                                        sortKey={sortKey}
-                                        onSort={this.onSort}
-                                        handleChange={this.handleChange}
-                                        showMore={this.showMore}
-                                        shopitems={shopitems}
-                                        updateRating={this.updateRating}
-                                        loadMore={loadMore}/>
-                                )}
-                            />
-                            <Route
-                                exact 
-                                path={routes.DETAIL_VIEW} 
-                                render={(routeProps) => (<DetailView {...routeProps} {...this.state}/>)}
-                            />
-                            </div>
-                        </Router>
-                    </StickyContainer>
-                <Footer navigation={navigation}/>
+                <StickyContainer>
+                    <Router>
+                        <div>
+                        <Route
+                            exact
+                            path={routes.STARTPAGE_VIEW}
+                            render={(state) => (
+                                <StartpageView
+                                    {...state}
+                                    navigation={navigation}/>
+                            )}
+                        />
+                        <Route
+                            exact 
+                            path={routes.SHOP_VIEW} 
+                            render={(state) => (
+                                <ShopView
+                                    sortKey={sortKey}
+                                    onSort={this.onSort}
+                                    handleChange={this.handleChange}
+                                    showMore={this.showMore}
+                                    shopitems={shopitems}
+                                    updateRating={this.updateRating}
+                                    loadMore={loadMore}/>
+                            )}
+                        />
+                        <Route
+                            exact 
+                            path={routes.DETAIL_VIEW} 
+                            render={(state) => (<DetailView {...state} {...this.state}/>)}
+                        />
+                        </div>
+                    </Router>
+                </StickyContainer>
+            <Footer navigation={navigation}/>
             </div>
         );
     }
