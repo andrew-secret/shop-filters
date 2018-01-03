@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../../components/Header/Header';
 import TeaserSection from '../../components/TeaserSection/TeaserSection';
 import ContentSection from '../../components/ContentSection/ContentSection';
+import {Link} from 'react-router-dom';
 import './StartpageView.css';
 
 
@@ -16,7 +17,7 @@ const text = `Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 
 const StartpageView = (props) =>
     <div className="startpageView">
-        <Header navigation={props.navigation} />
+        <Header {...props} />
         <TeaserSection 
             headline="New arrivals"
             number="2018"

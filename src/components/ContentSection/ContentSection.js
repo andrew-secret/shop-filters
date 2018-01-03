@@ -20,6 +20,7 @@ const ContentSection = ({
         <div className="contentSection__images">
             {images ? (images.map(item =>
                 <img
+                    key={item.id}
                     src={require(`../../assets/${item.image}`)} 
                     className={classNames(['contentSection__image'], item.class)} 
                     alt={item.alt}/>)

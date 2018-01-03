@@ -29,7 +29,7 @@ const ShopItem = ({
             </div>
             <Link
                 className="shopItem__link"
-                to={`detailView/${id}/`}>
+                to={`detailView/${id}`}>
                 <img src={require(`../../assets/shopitems/${image}`)}
                     className="shopItem__image"
                     alt={model}/>
