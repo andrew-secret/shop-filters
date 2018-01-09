@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Navigation from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';
 import DetailView from './views/DetailView/DetailView';
@@ -307,7 +308,7 @@ class App extends Component {
                 <Navigation />
                 <StickyContainer>
                     <Router>
-                        <div>
+                        <ScrollToTop>
                         <Route
                             exact
                             path={routes.STARTPAGE_VIEW}
@@ -336,7 +337,7 @@ class App extends Component {
                             path={routes.DETAIL_VIEW} 
                             render={(state) => (<DetailView {...state} {...this.state}/>)}
                         />
-                        </div>
+                        </ScrollToTop>
                     </Router>
                 </StickyContainer>
             <Footer navigation={navigation}/>
