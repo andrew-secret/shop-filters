@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./App.css";
+import React, { Component } from 'react';
+import './App.css';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Navigation from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';

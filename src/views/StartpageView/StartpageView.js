@@ -2,7 +2,6 @@ import React from 'react';
 import Header from '../../components/Header/Header';
 import TeaserSection from '../../components/TeaserSection/TeaserSection';
 import ContentSection from '../../components/ContentSection/ContentSection';
-import {Link} from 'react-router-dom';
 import './StartpageView.css';
 
 
