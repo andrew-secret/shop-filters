@@ -42,7 +42,9 @@ const ShopList = ({
             <CSSTransitionGroup
                 transitionName="example"
                 transitionAppear={true}
-                transitionAppearTimeout={500}>
+                transitionAppearTimeout={500}
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={300}>
                 <ul className="shopList">
                 {SORTS[sortKey](shopitems).slice(0, loadMore).map(item =>
                     <ShopItem

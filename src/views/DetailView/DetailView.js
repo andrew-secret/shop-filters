@@ -23,9 +23,11 @@ const DetailView = props => {
 
     return (
         <CSSTransitionGroup
-            transitionName="example"
+            transitionName="fade-in"
             transitionAppear={true}
-            transitionAppearTimeout={500}>
+            transitionAppearTimeout={500}
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500}>
             <div className="detailView">
                 <div className="detailView__left">
                     <img src={require(`../../assets/shopitems/${shopItem.image}`)}
