@@ -4,18 +4,14 @@ import ShopItem from '../ShopItem/ShopItem';
 import Button from '../Button/Button';
 import { sortBy } from 'lodash';
 import { CSSTransitionGroup } from 'react-transition-group';
+import { connect } from 'react-redux';
+import { store } from './../../store';
 
-const ShopList = ({
-    shopitems, 
-    sortKey, 
-    loadMore, 
-    showMore,
-    updateRating
-}) => {
+const ShopList = (props) => {
 
     const checkForLikes = () => {
         let rating_sum = 0;
-        shopitems.forEach((obj) => {
+        props.shopitems.forEach((obj) => {
             rating_sum += obj['rating'];
         });
 
@@ -46,23 +42,32 @@ const ShopList = ({
                 transitionEnterTimeout={500}
                 transitionLeaveTimeout={300}>
                 <ul className="shopList">
-                {SORTS[sortKey](shopitems).slice(0, loadMore).map(item =>
-                    <ShopItem
-                        updateRating={updateRating}
-                        key={item.id}
-                        {...item}
-                    />
-                )}
+                    {console.log('sortKey', props.sortState)}
+                    {SORTS[props.sortState](props.shopitems).map(item =>
+                        <ShopItem
+                            updateRating={props.updateRating}
+                            key={item.id}
+                            {...item}
+                        />
+                    )}
                 </ul>
             </CSSTransitionGroup>
-            {loadMore < shopitems.length ? (
+            {props.loadMore < props.shopitems.length ? (
                 <Button
                     className="shopList__showMoreBtn"
-                    onClick={showMore}
+                    onClick={props.showMore}
                     label="Show more" />
             ) : null }
         </div>
     );
 };
 
-export default ShopList;
+const mapStateToProps = (state) => {
+    return {
+        sortState: state.sortState,
+    }
+};
+
+const ConnectedShopList = connect(mapStateToProps)(ShopList);
+
+export default ConnectedShopList;
