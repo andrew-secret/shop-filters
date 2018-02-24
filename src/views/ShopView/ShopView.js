@@ -1,11 +1,8 @@
 import React from 'react';
 import FilterBar from '../../components/FilterBar/FilterBar';
-import ShopList from '../../components/ShopList/ShopList';
+import ConnectedShopList from '../../components/ShopList/ShopList';
 
 const ShopView = ({
-    sortKey,
-    onSort,
-    handleChange,
     loadMore,
     showMore,
     updateRating,
@@ -13,13 +10,8 @@ const ShopView = ({
 }) => {
     return (
         <div>
-            <FilterBar
-                sortKey={sortKey}
-                onSort={onSort}
-                handleChange={handleChange}/>
-            <ShopList
-                sortKey={sortKey}
-                onSort={onSort}
+            <FilterBar/>
+            <ConnectedShopList
                 loadMore={loadMore}
                 showMore={showMore}
                 updateRating={updateRating}

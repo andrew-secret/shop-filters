@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import './App.css';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Navigation from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';
 import DetailView from './views/DetailView/DetailView';
 import ShopView from './views/ShopView/ShopView';
 import StartpageView from './views/StartpageView/StartpageView';
-
 import { findById, incrementRating, updateShopItems } from './lib/scripts/shopHelper';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { StickyContainer } from 'react-sticky';
 import { base } from './base';
 import * as routes from './constants/routes';
+import './App.css';
 
 const navigation = [
     { id: 1, value: 'New in', link: '#' },
@@ -29,12 +28,9 @@ class App extends Component {
 
         this.state = {
             shopitems: [],
-            sortKey: 'NONE',
             loadMore: 9,
         };
 
-        this.onSort = this.onSort.bind(this);
-        this.handleChange = this.handleChange.bind(this);
         this.showMore = this.showMore.bind(this);
         this.updateRating = this.updateRating.bind(this);
     }
@@ -54,16 +50,6 @@ class App extends Component {
         })
     }
 
-    onSort(sortKey) {
-        this.setState({ sortKey });
-    }
-
-    handleChange(evnt, sortKey) {
-        this.setState({
-            sortKey: evnt.target.value,
-        })
-    }
-
     componentWillMount () {
         this.shopItemsRef = base.syncState('shopitems', {
             context: this,
@@ -78,7 +64,6 @@ class App extends Component {
     render() {
         const {
             shopitems,
-            sortKey,
             loadMore
         } = this.state;
 
@@ -102,9 +87,6 @@ class App extends Component {
                             path={routes.SHOP_VIEW} 
                             render={(state) => (
                                 <ShopView
-                                    sortKey={sortKey}
-                                    onSort={this.onSort}
-                                    handleChange={this.handleChange}
                                     showMore={this.showMore}
                                     shopitems={shopitems}
                                     updateRating={this.updateRating}
