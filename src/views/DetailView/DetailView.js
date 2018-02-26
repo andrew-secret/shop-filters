@@ -4,7 +4,7 @@ import { findById } from '../../lib/scripts/shopHelper';
 import { formatPrice } from '../../lib/scripts/shopHelper';
 import SelectList from '../../components/SelectList/SelectList';
 import { CSSTransitionGroup } from 'react-transition-group';
-import { base } from '../../base';
+// import { base } from '../../base';
 import './DetailView.css';
 
 const defaultValue = 'Select your size:';
@@ -15,16 +15,16 @@ const selectList = [
 ];
 
 class DetailView extends Component {
-    componentWillMount () {
-        this.shopItemsRef = base.syncState('shopitems', {
-            context: this,
-            state: 'shopitems'
-        });
-    }
+    // componentWillMount () {
+    //     this.shopItemsRef = base.syncState('shopitems', {
+    //         context: this,
+    //         state: 'shopitems'
+    //     });
+    // }
 
-    componentWillUnmount() {
-        base.removeBinding(this.shopItemsRef);
-    }
+    // componentWillUnmount() {
+    //     base.removeBinding(this.shopItemsRef);
+    // }
 
     render() {
         const id = parseInt(this.props.match.params.id, 10);

@@ -8,7 +8,8 @@ import StartpageView from './views/StartpageView/StartpageView';
 import { findById, incrementRating, updateShopItems } from './lib/scripts/shopHelper';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { StickyContainer } from 'react-sticky';
-import { base } from './base';
+
+// import { base } from './base';
 import * as routes from './constants/routes';
 import './App.css';
 
@@ -51,14 +52,14 @@ class App extends Component {
     }
 
     componentWillMount () {
-        this.shopItemsRef = base.syncState('shopitems', {
-            context: this,
-            state: 'shopitems'
-        });
+        // this.shopItemsRef = base.syncState('shopitems', {
+        //     context: this,
+        //     state: 'shopitems'
+        // });
     }
 
     componentWillUnmount() {
-        base.removeBinding(this.shopItemsRef);
+        // base.removeBinding(this.shopItemsRef);
     }
 
     render() {
