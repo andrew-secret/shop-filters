@@ -1,13 +1,15 @@
 import React from 'react';
-import './ShopList.css';
-import ShopItem from '../ShopItem/ShopItem';
-import Button from '../Button/Button';
+import { connect } from 'react-redux';
+import { compose } from 'redux'
+import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import { sortBy } from 'lodash';
 import { CSSTransitionGroup } from 'react-transition-group';
-import { connect } from 'react-redux';
 import { store } from './../../store';
+import ShopItem from '../ShopItem/ShopItem';
+import Button from '../Button/Button';
+import './ShopList.css';
 
-const ShopList = (props) => {
+const ShopList = (props, firebbase) => {
 
     const checkForLikes = () => {
         let rating_sum = 0;
@@ -42,32 +44,37 @@ const ShopList = (props) => {
                 transitionEnterTimeout={500}
                 transitionLeaveTimeout={300}>
                 <ul className="shopList">
-                    {console.log('sortKey', props.sortState)}
-                    {SORTS[props.sortState](props.shopitems).map(item =>
+                    {isLoaded(props.shopitems) ? (
+                    SORTS[props.sortState](props.shopitems).map(item =>
                         <ShopItem
                             updateRating={props.updateRating}
                             key={item.id}
                             {...item}
                         />
-                    )}
+                    )
+                    ): null}
                 </ul>
             </CSSTransitionGroup>
-            {props.loadMore < props.shopitems.length ? (
+            {/* {props.loadMore < props.shopitems.length ? (
                 <Button
                     className="shopList__showMoreBtn"
                     onClick={props.showMore}
                     label="Show more" />
-            ) : null }
+            ) : null } */}
         </div>
     );
 };
 
 const mapStateToProps = (state) => {
     return {
+        shopitems: state.firebase.data.shopitems,
         sortState: state.sortState,
     }
 };
 
-const ConnectedShopList = connect(mapStateToProps)(ShopList);
-
-export default ConnectedShopList;
+export default compose(
+    firebaseConnect([
+      'shopitems' // { path: '/todos' } // object notation
+    ]),
+    connect(mapStateToProps)
+  )(ShopList);

@@ -1,10 +1,9 @@
 import { createStore, combineReducers, compose } from 'redux';
 import { connect } from 'react-redux'
 import React from 'react';
-import { firebaseReducer, reactReduxFirebase } from 'react-redux-firebase';
 import * as firebase from 'firebase';
-import rateReducer from  'reducers/rateReducer';
-import sortReducer from  'reducers/sortReducer';
+import { firebaseReducer, reactReduxFirebase } from 'react-redux-firebase';
+import sortReducer from  './reducers/sortReducer';
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
@@ -20,7 +19,6 @@ firebase.initializeApp(firebaseConfig)
 
 const rootReducer = combineReducers({
     firebase: firebaseReducer,
-    rateState: rateReducer,
     sortState: sortReducer,
 });
 
@@ -34,5 +32,3 @@ export const store = createStoreWithMiddleware(
     rootReducer,
     initialState,
 );
-
-console.log('firebase', firebase);
