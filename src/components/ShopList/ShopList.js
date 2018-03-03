@@ -1,21 +1,18 @@
 import React from 'react';
-import './ShopList.css';
-import ShopItem from '../ShopItem/ShopItem';
-import Button from '../Button/Button';
+import { connect } from 'react-redux';
+import { compose } from 'redux'
+import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import { sortBy } from 'lodash';
 import { CSSTransitionGroup } from 'react-transition-group';
+import ShopItem from '../ShopItem/ShopItem';
+import Button from '../Button/Button';
+import './ShopList.css';
 
-const ShopList = ({
-    shopitems, 
-    sortKey, 
-    loadMore, 
-    showMore,
-    updateRating
-}) => {
+const ShopList = (props, firebbase) => {
 
     const checkForLikes = () => {
         let rating_sum = 0;
-        shopitems.forEach((obj) => {
+        props.shopitems.forEach((obj) => {
             rating_sum += obj['rating'];
         });
 
@@ -37,6 +34,8 @@ const ShopList = ({
         RATING_DESC: shopitems => checkForLikes() ? sortBy(shopitems, 'rating').reverse() : shopitems,
     }
 
+    const shopItems = isLoaded(props.shopitems);
+
     return (
         <div className="wrapper">
             <CSSTransitionGroup
@@ -46,23 +45,31 @@ const ShopList = ({
                 transitionEnterTimeout={500}
                 transitionLeaveTimeout={300}>
                 <ul className="shopList">
-                {SORTS[sortKey](shopitems).slice(0, loadMore).map(item =>
-                    <ShopItem
-                        updateRating={updateRating}
-                        key={item.id}
-                        {...item}
-                    />
-                )}
+                    {isLoaded(props.shopitems) ? (
+                    SORTS[props.sortState](props.shopitems).map(item =>
+                        <ShopItem
+                            updateRating={props.updateRating}
+                            key={item.id}
+                            {...item}
+                        />
+                    )
+                    ): null}
                 </ul>
             </CSSTransitionGroup>
-            {loadMore < shopitems.length ? (
-                <Button
-                    className="shopList__showMoreBtn"
-                    onClick={showMore}
-                    label="Show more" />
-            ) : null }
         </div>
     );
 };
 
-export default ShopList;
+const mapStateToProps = (state) => {
+    return {
+        shopitems: state.firebase.data.shopitems,
+        sortState: state.sortState,
+    }
+};
+
+export default compose(
+    firebaseConnect([
+      'shopitems' // { path: '/todos' } // object notation
+    ]),
+    connect(mapStateToProps)
+)(ShopList);

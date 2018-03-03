@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux'
+import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import Button from '../../components/Button/Button';
 import { findById } from '../../lib/scripts/shopHelper';
 import { formatPrice } from '../../lib/scripts/shopHelper';
 import SelectList from '../../components/SelectList/SelectList';
 import { CSSTransitionGroup } from 'react-transition-group';
-import { base } from '../../base';
 import './DetailView.css';
 
 const defaultValue = 'Select your size:';
@@ -15,21 +17,12 @@ const selectList = [
 ];
 
 class DetailView extends Component {
-    componentWillMount () {
-        this.shopItemsRef = base.syncState('shopitems', {
-            context: this,
-            state: 'shopitems'
-        });
-    }
-
-    componentWillUnmount() {
-        base.removeBinding(this.shopItemsRef);
-    }
 
     render() {
         const id = parseInt(this.props.match.params.id, 10);
         const shopItem = findById(id, this.props.shopitems);
         const addToCart = 'Add to cart';
+
         return (
             <div>
                 <CSSTransitionGroup
@@ -72,4 +65,15 @@ class DetailView extends Component {
     }
 }
 
-export default DetailView;
+const mapStateToProps = (state) => {
+    return {
+        shopitems: state.firebase.data.shopitems,
+    }
+};
+
+export default compose(
+    firebaseConnect([
+      'shopitems' // { path: '/todos' } // object notation
+    ]),
+    connect(mapStateToProps)
+)(DetailView);

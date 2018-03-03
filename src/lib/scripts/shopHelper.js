@@ -3,10 +3,13 @@ export const formatPrice = price =>
         'de-DE', { style: 'currency', currency: 'EUR' 
     });
 
-export const findById = (id, list) => 
-    list.find(item => item.id === id);
+export const findById = (id, list) =>
+    list ? (
+        list.find(item => item.id === id)
+    ) : (
+        console.log('Loading')
+    )
 
-  
 export const incrementRating = listItem => {
     return (
         { ...listItem, rating: 1 + listItem.rating++ }
