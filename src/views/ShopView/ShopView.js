@@ -12,10 +12,7 @@ const ShopView = ({
         <div>
             <FilterBar/>
             <ConnectedShopList
-                loadMore={loadMore}
-                showMore={showMore}
-                updateRating={updateRating}
-                shopitems={shopitems}/>
+                updateRating={updateRating}/>
         </div>
     );
 }

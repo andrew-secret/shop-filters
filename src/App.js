@@ -23,51 +23,7 @@ const navigation = [
 ];
 
 class App extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            shopitems: [],
-            loadMore: 9,
-        };
-
-        this.showMore = this.showMore.bind(this);
-        this.updateRating = this.updateRating.bind(this);
-    }
-
-    showMore() {
-        this.setState({
-            loadMore: this.state.loadMore + 9
-        })
-    }
-
-    updateRating(id) {
-        const shopItem = findById(id, this.state.shopitems);
-        const incremented = incrementRating(shopItem);
-        const updatedList = updateShopItems(this.state.shopitems, incremented);
-        this.setState({
-            shopitems: updatedList
-        })
-    }
-
-    componentWillMount () {
-        // this.shopItemsRef = base.syncState('shopitems', {
-        //     context: this,
-        //     state: 'shopitems'
-        // });
-    }
-
-    componentWillUnmount() {
-        // base.removeBinding(this.shopItemsRef);
-    }
-
     render() {
-        const {
-            shopitems,
-            loadMore
-        } = this.state;
-
         return (
             <div className="App">
                 <Navigation />
@@ -87,11 +43,7 @@ class App extends Component {
                             exact 
                             path={routes.SHOP_VIEW} 
                             render={(state) => (
-                                <ShopView
-                                    showMore={this.showMore}
-                                    shopitems={shopitems}
-                                    updateRating={this.updateRating}
-                                    loadMore={loadMore}/>
+                                <ShopView/>
                             )}
                         />
                         <Route
