@@ -4,7 +4,6 @@ import { compose } from 'redux'
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import { sortBy } from 'lodash';
 import { CSSTransitionGroup } from 'react-transition-group';
-import { store } from './../../store';
 import ShopItem from '../ShopItem/ShopItem';
 import Button from '../Button/Button';
 import './ShopList.css';
@@ -35,6 +34,8 @@ const ShopList = (props, firebbase) => {
         RATING_DESC: shopitems => checkForLikes() ? sortBy(shopitems, 'rating').reverse() : shopitems,
     }
 
+    const shopItems = isLoaded(props.shopitems);
+
     return (
         <div className="wrapper">
             <CSSTransitionGroup
@@ -55,12 +56,6 @@ const ShopList = (props, firebbase) => {
                     ): null}
                 </ul>
             </CSSTransitionGroup>
-            {/* {props.loadMore < props.shopitems.length ? (
-                <Button
-                    className="shopList__showMoreBtn"
-                    onClick={props.showMore}
-                    label="Show more" />
-            ) : null } */}
         </div>
     );
 };
@@ -77,4 +72,4 @@ export default compose(
       'shopitems' // { path: '/todos' } // object notation
     ]),
     connect(mapStateToProps)
-  )(ShopList);
+)(ShopList);
